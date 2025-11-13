@@ -1,3 +1,16 @@
+# ----------
+
+git clone https://RaneshChandraKatta@github.com/RaneshChandraKatta/task-master.git
+cd task-master
+git config --local user.email "katta.ranesh.chandra@gmail.com"
+git config --local user.name "RaneshChandraKatta"
+git pull
+
+npm i
+npm run dev
+
+# ----------
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
