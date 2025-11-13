@@ -1,17 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function Home() {
-  let [taskList, setTaskList] = useState([
-    "this is task 1",
-    "this is task 2",
-    "this is task 3",
+  const [noteContent, setNoteContent] = useState("");
+  const [taskList, setTaskList] = useState([
+    "This is task 1",
+    "This is task 2",
+    "This is task 3",
   ]);
-  let [noteContent, setNoteContent] = useState();
 
-  const handleNoteContentChanged = (e) => {
+  const handleNoteContentChanged = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setNoteContent(e.target.value);
+  };
+  const handleSaveNote = () => {
+    const newTaskList = [noteContent, ...taskList];
+    setTaskList(newTaskList);
+  };
+
+  const handleDeleteNote = (index: number) => {
+    const newTaskList = [...taskList];
+    newTaskList.splice(index, 1);
+    setTaskList(newTaskList);
   };
 
   return (
@@ -25,20 +35,21 @@ export default function Home() {
               onChange={handleNoteContentChanged}
             ></textarea>
           </div>
-          <button
-            onClick={() => {
-              alert(noteContent);
-            }}
-            className=""
-          >
-            Save
-          </button>
+          <button onClick={handleSaveNote}>Save</button>
 
-          <hr/>
-          
-          {
-            taskList
-          }
+          <hr />
+
+          <h1>Task list</h1>
+          <ul>
+            {taskList.map((taskName, index) => {
+              return (
+                <li key={taskName}>
+                  {taskName}
+                  <button onClick={() => handleDeleteNote(index)}>X</button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </main>
     </div>

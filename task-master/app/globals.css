@@ -32,4 +32,12 @@ button:hover {
   cursor: pointer;
 }
 
+ul {
+  list-style: disc;
+}
+
+h1 {
+  font-size: 22px;
+}
+
 /* bg-gray-200 border-2 border-gray-300 p-2 rounded-xl hover:bg-gray-300 hover:cursor-pointer font-bold */
